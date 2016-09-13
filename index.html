@@ -46,7 +46,6 @@
 			<span class="nowrap absolute right top p04-0 m fw700 color">{{117 - song.length}}</span>
 		</div>
 		<hr class="transparent clear">
-    <vex-flow class="g1 center" ng-model="song"></vex-flow>
 		<hr class="transparent clear">
 		<a class="btn btnGreen m" ng-click="playSong()">
 			<span ng-show="buttonName > 0">Play <i class="material-icons" style="margin:-1px  0">&#xE037;</i></span>
@@ -54,6 +53,7 @@
 		</a>
 		<a class="btn btnBlue m" href="https://twitter.com/intent/tweet?text={{song}}%20&hashtags=PPNote+@ThePepperola" target="_blank">Tweet this song</a>
 	</div>
+  <vex-flow class="g1 center" ng-model="song"></vex-flow>
 	<div class="xm">
 		<hr class="transparent clear">
 		<div class="g1 center">

@@ -25,6 +25,7 @@ app.directive('vexFlow', function() {
         var multiKey = false;
         var timeCounter = "w";
         var totalTime = 0;
+        var topVal = 20 - 80;
         var currentNote = [];
         var notesArray = [];
 
@@ -99,7 +100,7 @@ app.directive('vexFlow', function() {
               timeCounter = "q";
               continue;
             case 5: // 3 Eigth note
-              timeCounter = "e";
+              timeCounter = "16";
               continue;
           }
 
@@ -120,41 +121,72 @@ app.directive('vexFlow', function() {
               } else { 
                 tempNote = new VF.StaveNote({ keys: currentNote, duration: timeCounter });
               }
-              if(totalTime == 0) {
+
+              if(totalTime % 4 == 0) { 
                 notesArray.push(new Vex.Flow.BarNote(1));
-              } else {
-                if(totalTime % 4 == 0) { 
-                  notesArray.push(new Vex.Flow.BarNote(1));
-                }
               }
 
               if(timeCounter == "w") { totalTime += 4 };
               if(timeCounter == "h") { totalTime += 2 };
               if(timeCounter == "q") { totalTime += 1 };
-              if(timeCounter == "e") { totalTime += 0.5 };
+              if(timeCounter == "16") { totalTime += 0.5 };
+
+              for(var n = 0, m = 0; n < currentNote.length; n++) {
+                if(currentNote[n].indexOf("#") >= 0) {
+                  tempNote.addAccidental(m++, new VF.Accidental("#"));
+                }
+              }
+
               notesArray.push(tempNote);
+              if(totalTime % 8 == 0 && totalTime != 0) {
+                // Create a stave of full width at position 10, 40 on the canvas.
+                topVal += 80; 
+                var stave = new VF.Stave(10, topVal, iElement.parent().width()-50);
+
+                // Add a clef and time signature.
+                stave.addClef("treble").addTimeSignature("4/4"); 
+
+                // Create a voice in 4/4 and add above notes
+                var voice = new VF.Voice({num_beats: 4, resolution: Vex.Flow.RESOLUTION,  beat_value: 4});
+                voice.setStrict(false);
+                voice.addTickables(notesArray);
+                notesArray = [];
+
+                // Format and justify the notes to full with in pixels.
+                var formatter = new VF.Formatter().joinVoices([voice]).format([voice], iElement.parent().width()-50);
+
+                stave.setContext(context).draw();
+                // Render voice
+                voice.draw(context, stave);
+              }
+
             }
             currentNote = [];
           }
         }
-      
-        // Create a stave of full width at position 10, 40 on the canvas.
-        var stave = new VF.Stave(10, 40, iElement.parent().width()-50);
+        if(notesArray.length > 1) {
+          // Create a stave of full width at position 10, 40 on the canvas.
+          topVal += 80;
+          var stave = new VF.Stave(10, topVal, iElement.parent().width()-50);
 
-        // Add a clef and time signature.
-        stave.addClef("treble").addTimeSignature("4/4"); 
+          // Add a clef and time signature.
+          stave.addClef("treble").addTimeSignature("4/4"); 
 
-        // Create a voice in 4/4 and add above notes
-        var voice = new VF.Voice({num_beats: 4, resolution: Vex.Flow.RESOLUTION,  beat_value: 4});
-        voice.setStrict(false);
-        voice.addTickables(notesArray);
+          // Create a voice in 4/4 and add above notes
+          var voice = new VF.Voice({num_beats: 4, resolution: Vex.Flow.RESOLUTION,  beat_value: 4});
+          voice.setStrict(false);
+          voice.addTickables(notesArray);
+          notesArray = [];
 
-        // Format and justify the notes to full with in pixels.
-        var formatter = new VF.Formatter().joinVoices([voice]).format([voice], iElement.parent().width()-50);
+          // Format and justify the notes to full with in pixels.
+          var formatter = new VF.Formatter().joinVoices([voice]).format([voice], iElement.parent().width()-50);
 
-        stave.setContext(context).draw();
-        // Render voice
-        voice.draw(context, stave);
+          stave.setContext(context).draw();
+          // Render voice
+          voice.draw(context, stave);
+        } 
+
+        iElement.find("svg").height(topVal + 100);
       });
     }
   }
