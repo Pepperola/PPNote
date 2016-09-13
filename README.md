@@ -35,3 +35,5 @@ Take a look at our Twitter [@ThePepperola](https://twitter.com/thepepperola), we
 ```ppnote
 1[ebgb]x2[dbgb]x2[dbFb]x2[daFa]x2e2(bg)ag_bc1(be)bgbd2(bF) g(gF)_(bg)a1(dg)bgbd2(Fb)eF_bc1(bd)bFbd2(aF)e1FadaF
 ```
+
+![Powered by Pepperola](https://pepperola.github.io/PPNote/images/pepperola_brand.png)
