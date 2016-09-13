@@ -83,7 +83,7 @@ var parsePeppeNotation = function(notationString, scope) {
         continue;
     }
 
-    // If there is a silence inside () is worng
+    // If there is a silence inside () is wrong
     if (c == 6 && multiKey) {
       scope.error = "There is a silence inside the () in character " + (i + 1).toString(10) + ".";
       return null;

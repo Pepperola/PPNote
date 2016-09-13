@@ -46,6 +46,8 @@
 			<span class="nowrap absolute right top p04-0 m fw700 color">{{117 - song.length}}</span>
 		</div>
 		<hr class="transparent clear">
+    <vex-flow class="g1 center" ng-model="song"></vex-flow>
+		<hr class="transparent clear">
 		<a class="btn btnGreen m" ng-click="playSong()">
 			<span ng-show="buttonName > 0">Play <i class="material-icons" style="margin:-1px  0">&#xE037;</i></span>
 			<span ng-show="buttonName == 0">Stop <i class="material-icons" style="margin:-1px  0">&#xE047;</i></span>
@@ -131,8 +133,10 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js"></script>
     <script type="text/javascript" src="https://tonejs.github.io/examples/scripts/StartAudioContext.js"></script>
+    <script type="text/javascript" src="https://npmcdn.com/vexflow/releases/vexflow-debug.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/Tonejs/Tone.js/master/build/Tone.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/vexFlowAngular.js"></script>
 
 </body>
 </html>
