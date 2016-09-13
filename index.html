@@ -1,1 +1,138 @@
-Hello World
+<html>
+<head>
+	<title>PPNote</title>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="edit-Type" edit="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="css/grid.min.css">
+    <link rel="stylesheet" type="text/css" href="css/gui.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/fonts/material-icons.css">
+	<link rel="shortcut" href="images/favicon.png">
+	<!-- non-retina iPhone pre iOS 7 -->
+	<link rel="apple-touch-icon" href="images/icon57.png" sizes="57x57">
+	<!-- non-retina iPad pre iOS 7 -->
+	<link rel="apple-touch-icon" href="images/icon72.png" sizes="72x72">
+	<!-- non-retina iPad iOS 7 -->
+	<link rel="apple-touch-icon" href="images/icon76.png" sizes="76x76">
+	<!-- retina iPhone pre iOS 7 -->
+	<link rel="apple-touch-icon" href="images/icon114.png" sizes="114x114">
+	<!-- retina iPhone iOS 7 -->
+	<link rel="apple-touch-icon" href="images/icon120.png" sizes="120x120">
+	<!-- retina iPad pre iOS 7 -->
+	<link rel="apple-touch-icon" href="images/icon144.png" sizes="144x144">
+	<!-- retina iPad iOS 7 -->
+	<link rel="apple-touch-icon" href="images/icon152.png" sizes="152x152">
+	<link rel="mask-icon" href="images/icon.svg" color="#333">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body ng-app="myApp" class="m ng-cloak" ng-controller="mainCtrl">
+<div  class="container p0-1">
+  <div class="center p1-0">
+  	<img src="images/icon.svg" height="42px">
+  	<h1 class="center fw200 xxl p0-1 m0">PPNote Composer</h1>
+  	<a href="https://twitter.com/ThePepperola" target="_blank" class="fw200">by <span class="fw700">@ThePepperola</span></a>
+  </div>
+  	<div class="center">
+  		<div ng-show="error.length > 0" class="msg msg-red">{{error}}</div>
+		<textarea class="xm fw300 song" rows="3" cols="40" maxlength="117" data-ng-minLength="1" ng-model="song" spellcheck="false" placeholder="Type here your song to tweet" autofocus></textarea>
+		<br>
+		<div class="compp01 matchParent relative m-4-0">
+			<div ng-show="song.length>0" class="progress-bar blueProgress" role="progressbar" aria-valuenow="{{song.length/117}}"
+			  aria-valuemin="0" aria-valuemax="100" style="width:{{song.length*100/117}}%;">
+			</div>
+			<span class="nowrap absolute right top p04-0 m fw700 color">{{117 - song.length}}</span>
+		</div>
+		<hr class="transparent clear">
+		<a class="btn btnGreen m" ng-click="playSong()">
+			<span ng-show="buttonName > 0">Play <i class="material-icons" style="margin:-1px  0">&#xE037;</i></span>
+			<span ng-show="buttonName == 0">Stop <i class="material-icons" style="margin:-1px  0">&#xE047;</i></span>
+		</a>
+		<a class="btn btnBlue m" href="https://twitter.com/intent/tweet?text={{song}}%20&hashtags=PPNote+@ThePepperola" target="_blank">Tweet this song</a>
+	</div>
+	<div class="xm">
+		<hr class="transparent clear">
+		<div class="g1 center">
+			<h2 class="fw200 xm color">What is this?</h2>
+			<p class="fw300 p0-1">The PPNote is a language created to write small short songs in Twitter to be played by an instrument.</p>
+			<p class="xs">Please visit <a href="https://twitter.com/ThePepperola" target="_blank">twitter/ThePepperola</a> for more info!</p>
+			<img width="400" class="p1-0" src="images/what_is_this.gif">
+		</div>
+		<hr class="transparent clear big">
+		<div class="g1 center">
+			<h2 class="xm fw200 color">But wait! How it works?</h2>
+			<p class="fw300">
+			The idea behind the PPNote is to be able to write as short as possible to make a great song fit in the 140 characters limitation of Twitter. So we defined a series of letters and number to represent notes and times:
+			</p>
+		</div>
+		<hr class="transparent clear big">
+		<div class="g1">
+			<ul>
+			<li class="center">
+				<h3 class="m0 xm">a, b, c, d, e, f, g</h3>
+				<p>These are the notes being played.</p>
+				<img width="300" src="images/how_it_works_notes.gif">
+				<hr class="clear transparent big">
+			</li>
+			<li class="center">
+				<h3 class="m0 xm">A, C, D, F, G</h3>
+				<p>These are the # (half tone higher or sharp) version of the notes.</p>
+				<img width="300" src="images/how_it_works_notes_sharp.gif">
+				<hr class="clear transparent big">
+			</li>
+			<li class="center">
+				<h3 class="m0 xm">_ (underscore)</h3>
+				<p>The underscore is used to represent a silence (or a mute note).<br>It has the same time of the other notes.</p>
+				<hr class="clear transparent big">
+			</li>
+			<li class="center">
+				<h3 class="m0 xm">0, 1, 2, 3</h3>
+				<p>These numbers represent the note values.<br>The 0 is the whole note, the 1 is the half note, the 2 is the quarter note and the 3 is the eight note. These can be used any time and change the tempo of all the following notes.</p>
+				<img width="300" src="images/how_it_works_note_values.gif">
+				<hr class="clear transparent big">
+			</li>
+			<li class="center">
+				<h3 class="m0 xm">( )</h3>
+				<p>The parenthesis are used to play a group of notes together like a chord.<br>If you write (ceg) the three notes will be played at the same time.<br>This is the C Major chord:</p>
+				<img width="300" src="images/how_it_works_chords.gif">
+				<hr class="clear transparent big">
+			</li>
+			<li class="center">
+				<h3 class="m0 xm">[]x0, []x1, []x2, []x3 ... []x9</h3>
+				<p>These are groups of things that are repeated. I told you, the main goal is to keep it short! So if something plays two times, you can put that in between brackets.</p>
+				<hr class="transparent clear">
+				<p><span class="fw400 color">[1gc2ef]x4</span> will play a bit of a classic series theme song.<br>That is the same as writing <span class="fw400 color">1gc2ef four times</span>!</p>
+				<hr class="clear transparent big">
+			</li>
+			</ul>
+			<div class="tips">
+				<p><span class="fw400 color">Things cannot be anidated</span>, except for placing parenthesis inside brackets, that is valid! But you cannot put brackets inside brackets or brackets inside parenthesis or parenthesis inside parenthesis!</p>
+				<hr class="transparent">
+				<p>
+				One more thing! <span class="fw400 color">Spaces and new-lines are ignored!</span>
+				</p>
+			</div>
+		</div>
+		<hr class="transparent clear big">
+		<hr class="transparent clear big">
+		<div>
+			<h2 class="fw300 xm color">Where can I find examples?</h2>
+			<p>Take a look at our Twitter <a href="http://twitter.com/ThePepperola" target="_blank">@ThePepperola</a>, we will have lots of examples there! Let me throw a short one here to help understand:</p>
+			<br>
+			<p class="tips break-all">1[ebgb]x2[dbgb]x2[dbFb]x2[daFa]x2e2(bg)ag_bc1(be)bgbd2(bF) g(gF)_(bg)a1(dg)bgbd2(Fb)eF_bc1(bd)bFbd2(aF)e1FadaF</p>
+			<br>
+		</div>
+    </div>
+</div>
+<hr class="clear transparent">
+<div class="matchParent center p1-0"><a href="http://twitter.com/ThePepperola" target="_blank"><img src="images/pepperola_brand.png" height="70px"></a></div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js"></script>
+    <script type="text/javascript" src="https://tonejs.github.io/examples/scripts/StartAudioContext.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Tonejs/Tone.js/master/build/Tone.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+.ng-cloak{display: none}
+textarea.song{}
+textarea.song{}
+textarea.song:focus{border: 1px solid #4c96d8}
+.compp01{padding:0 1px;}
+.container{max-width: 720px}
+.right{right: 0;}
+.top{top: 0}
+.m-4-0{margin: -4px 0px;}
+p,li{font-weight: 300}
+a:link, a:active, a:visited{font-weight: 400}
+.progress-bar{min-height: 4px}
+.tips{background-color: #fefefe; border:1px solid #1da1f2; padding:1em;}
