@@ -12,3 +12,4 @@ a:link, a:active, a:visited{font-weight: 400}
 .progress-bar{min-height: 4px}
 .tips{background-color: #fefefe; border:1px solid #1da1f2; padding:1em;}
 svg {display:block; width:100%;}
+.tryme {display:block; text-align:right;} 
