@@ -100,7 +100,7 @@ app.directive('vexFlow', function() {
               timeCounter = "q";
               continue;
             case 5: // 3 Eigth note
-              timeCounter = "16";
+              timeCounter = "8";
               continue;
           }
 
@@ -129,7 +129,7 @@ app.directive('vexFlow', function() {
               if(timeCounter == "w") { totalTime += 4 };
               if(timeCounter == "h") { totalTime += 2 };
               if(timeCounter == "q") { totalTime += 1 };
-              if(timeCounter == "16") { totalTime += 0.5 };
+              if(timeCounter == "8") { totalTime += 0.5 };
 
               for(var n = 0, m = 0; n < currentNote.length; n++) {
                 if(currentNote[n].indexOf("#") >= 0) {
