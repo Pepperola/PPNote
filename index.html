@@ -37,7 +37,7 @@
   </div>
   	<div class="center">
   		<div ng-show="error.length > 0" class="msg msg-red">{{error}}</div>
-		<textarea class="xm fw300 song" rows="3" cols="40" maxlength="117" data-ng-minLength="1" ng-model="song" spellcheck="false" placeholder="Type here your song to tweet" autofocus></textarea>
+		<textarea ng-hide="isMobile" class="xm fw300 song" rows="3" cols="40" maxlength="117" data-ng-minLength="1" ng-model="song" spellcheck="false" placeholder="Type here your song to tweet" autofocus></textarea>
 		<br>
 		<div class="compp01 matchParent relative m-4-0">
 			<div ng-show="song.length>0" class="progress-bar blueProgress" role="progressbar" aria-valuenow="{{song.length/117}}"
@@ -124,7 +124,7 @@
 			<p>Take a look at our Twitter <a href="http://twitter.com/ThePepperola" target="_blank">@ThePepperola</a>, we will have lots of examples there! Let me throw a short one here to help understand:</p>
 			<br>
       <p class="tips break-all">1[ebgb]x2[dbgb]x2[dbFb]x2[daFa]x2e2(bg)ag_bc1(be)bgbd2(bF) g(gF)_(bg)a1(dg)bgbd2(Fb)eF_bc1(bd)bFbd2(aF)e1FadaF</p>
-      <a class="tryme fw700 xs color" href="#" ng-click="song='1[ebgb]x2[dbgb]x2[dbFb]x2[daFa]x2e2(bg)ag_bc1(be)bgbd2(bF) g(gF)_(bg)a1(dg)bgbd2(Fb)eF_bc1(bd)bFbd2(aF)e1FadaF'">Try me!</a>
+      <a ng-hide="isMobile" class="tryme fw700 xs color" href="#" ng-click="song='1[ebgb]x2[dbgb]x2[dbFb]x2[daFa]x2e2(bg)ag_bc1(be)bgbd2(bF) g(gF)_(bg)a1(dg)bgbd2(Fb)eF_bc1(bd)bFbd2(aF)e1FadaF'">Try me!</a>
 			<br>
 		</div>
     </div>
