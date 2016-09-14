@@ -13,3 +13,16 @@ a:link, a:active, a:visited{font-weight: 400}
 .tips{background-color: #fefefe; border:1px solid #1da1f2; padding:1em;}
 svg {display:block; width:100%;}
 .tryme {display:block; text-align:right;} 
+.max100{max-width: 100%}
+/* Font sizes */
+body{font-size: 12px !important}
+@media screen and (min-width:28em) {
+	body{font-size: 15px !important}
+}
+/* Fix for vf */
+.vf-stavenote{
+-ms-transform: scale(0.92, 1); /* IE 9 */
+    -webkit-transform: (0.92, 1); /* Safari */
+    transform: scale(0.92, 1);
+    }
+rect{display:none}
