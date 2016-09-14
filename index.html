@@ -39,7 +39,7 @@
   		<div ng-show="error.length > 0" class="msg msg-red">{{error}}</div>
 		<textarea ng-hide="isMobile" class="xm fw300 song" rows="3" cols="40" maxlength="117" data-ng-minLength="1" ng-model="song" spellcheck="false" placeholder="Type here your song to tweet" autofocus></textarea>
 		<br>
-		<div class="compp01 matchParent relative m-4-0">
+		<div ng-hide="isMobile" class="compp01 matchParent relative m-4-0">
 			<div ng-show="song.length>0" class="progress-bar blueProgress" role="progressbar" aria-valuenow="{{song.length/117}}"
 			  aria-valuemin="0" aria-valuemax="100" style="width:{{song.length*100/117}}%;">
 			</div>
@@ -47,11 +47,11 @@
 		</div>
 		<hr class="transparent clear">
 		<hr class="transparent clear">
-		<a class="btn btnGreen m" ng-click="playSong()">
+		<a ng-hide="isMobile" class="btn btnGreen m" ng-click="playSong()">
 			<span ng-show="buttonName > 0">Play <i class="material-icons" style="margin:-1px  0">&#xE037;</i></span>
 			<span ng-show="buttonName == 0">Stop <i class="material-icons" style="margin:-1px  0">&#xE047;</i></span>
 		</a>
-		<a class="btn btnBlue m" href="https://twitter.com/intent/tweet?text={{song}}%20&hashtags=PPNote+@ThePepperola" target="_blank">Tweet this song</a>
+		<a class="btn btnBlue m" ng-hide="isMobile" href="https://twitter.com/intent/tweet?text={{song}}%20&hashtags=PPNote+@ThePepperola" target="_blank">Tweet this song</a>
 	</div>
   <vex-flow class="g1 center" ng-model="song"></vex-flow>
 	<div class="xm">
