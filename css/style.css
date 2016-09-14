@@ -19,10 +19,3 @@ body{font-size: 12px !important}
 @media screen and (min-width:28em) {
 	body{font-size: 15px !important}
 }
-/* Fix for vf */
-.vf-stavenote{
--ms-transform: scale(0.92, 1); /* IE 9 */
-    -webkit-transform: (0.92, 1); /* Safari */
-    transform: scale(0.92, 1);
-    }
-rect{display:none}
