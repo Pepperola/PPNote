@@ -183,6 +183,7 @@ app.controller('mainCtrl', ['$scope', function($scope) {
 
   if($scope.isMobile) {
     $scope.error = "Please open this page in a desktop browser.";
+    $scope.song = "";
   }
 
   $scope.playSong = function() {
