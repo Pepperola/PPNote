@@ -172,7 +172,12 @@ $(document).ready(function() {
 var app = angular.module("myApp", []);
 
 app.controller('mainCtrl', ['$scope', function($scope) {
-  $scope.song = "";
+  if(window.location.hash) {
+    $scope.song = window.location.hash.substring(1); 
+  } else {
+    $scope.song = "";
+  }
+
   $scope.buttonName = 1;
   $scope.isMobile = window.mobilecheck(); 
 
