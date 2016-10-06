@@ -1,4 +1,5 @@
 var synth;
+var bpmVal = 120;
 
 window.mobilecheck = function() {
   var check = false;
@@ -21,6 +22,79 @@ var parsePeppeNotation = function(notationString, scope) {
     return null;
   }
 
+  // Pre-process the time
+  bpmVal = 120;
+  if (notationString[0] == '>'){
+    switch(parseInt(notationString[1])){
+    case 1:
+      bpmVal = 130;
+      break;
+    case 2:
+      bpmVal = 140;
+      break;
+    case 3:
+      bpmVal = 150;
+      break;
+    case 4:
+      bpmVal = 160;
+      break;
+    case 5:
+      bpmVal = 170;
+      break;
+    case 6:
+      bpmVal = 180;
+      break;
+    case 7:
+      bpmVal = 190;
+      break;
+    case 6:
+      bpmVal = 200;
+      break;
+    case 7:
+      bpmVal = 210;
+      break;
+    default:
+      scope.error = "Invalid speed value.";
+      return null;
+    }
+    notationString = notationString.substring(2);
+  }
+
+  if (notationString[0] == '<'){
+    switch(parseInt(notationString[1])){
+    case 1:
+      bpmVal = 110;
+      break;
+    case 2:
+      bpmVal = 100;
+      break;
+    case 3:
+      bpmVal = 90;
+      break;
+    case 4:
+      bpmVal = 80;
+      break;
+    case 5:
+      bpmVal = 70;
+      break;
+    case 6:
+      bpmVal = 60;
+      break;
+    case 7:
+      bpmVal = 50;
+      break;
+    case 6:
+      bpmVal = 40;
+      break;
+    case 7:
+      bpmVal = 30;
+      break;
+    default:
+      scope.error = "Invalid speed value.";
+      return null;
+    }
+    notationString = notationString.substring(2);
+  }
   // Pre-process the multipliers
   for (var i = 0; i < notationString.length; i++) {
     var c = notationString[i];
@@ -149,7 +223,7 @@ var peppePlay = function(notesArray, scope) {
   Tone.Transport.loop = false;
   Tone.loop = 1;
   Tone.loopEnd = (notesArray.length * 30 + 60).toString(10) + "i";
-  Tone.Transport.bpm.value = 120;
+  Tone.Transport.bpm.value = bpmVal;
   Tone.Transport.start();
 };
 
