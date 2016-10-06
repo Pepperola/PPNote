@@ -47,10 +47,10 @@ var parsePeppeNotation = function(notationString, scope) {
     case 7:
       bpmVal = 190;
       break;
-    case 6:
+    case 8:
       bpmVal = 200;
       break;
-    case 7:
+    case 9:
       bpmVal = 210;
       break;
     default:
@@ -83,10 +83,10 @@ var parsePeppeNotation = function(notationString, scope) {
     case 7:
       bpmVal = 50;
       break;
-    case 6:
+    case 8:
       bpmVal = 40;
       break;
-    case 7:
+    case 9:
       bpmVal = 30;
       break;
     default:
