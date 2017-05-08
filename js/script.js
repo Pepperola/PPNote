@@ -183,7 +183,7 @@ var parsePeppeNotation = function (notationString, scope) {
             if(totalCounter > 8){
                 silenceTime = totalCounter - timeCounter;
                 while( silenceTime < 8 ) {
-                    notesArray.push(0);
+                    notesArray.unshift(0);
                     silenceTime++;
                 }
                 totalCounter + 0;
