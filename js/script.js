@@ -13,6 +13,9 @@ var parsePeppeNotation = function (notationString, scope) {
     var keyValues = "()0123_aAbcCdDefFgG";
     var multiKey = false;
     var timeCounter = 8;
+    var timeCounterOld = 0;
+    var totalCounter = 0;
+    var silenceTime = 0;
     var currentNote = 0;
     var notesArray = [];
     scope.error = "";
@@ -176,6 +179,20 @@ var parsePeppeNotation = function (notationString, scope) {
         }
 
         if (!multiKey) {
+            totalCounter = timeCounterOld + timeCounter;
+            if(totalCounter > 8){
+                silenceTime = totalCounter - timeCounter;
+                while( silenceTime < 8 ) {
+                    notesArray.push(0);
+                    silenceTime++;
+                }
+                totalCounter + 0;
+            }
+            if(totalCounter == 8) {
+                timeCounterOld = 0;
+            }else{
+                timeCounterOld = totalCounter;
+            }
             notesArray.push(currentNote);
             currentNote = 0;
             for (var j = 1; j < timeCounter; j++) {
