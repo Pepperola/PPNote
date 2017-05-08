@@ -1,4 +1,4 @@
-app.controller('mainCtrl', ['$scope', function ($scope) {
+ppNoteApp.controller('mainCtrl', ['$scope', function ($scope) {
     if (window.location.hash) {
         $scope.song = window.location.hash.substring(1);
     } else {

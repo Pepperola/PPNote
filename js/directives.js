@@ -1,4 +1,4 @@
-app.directive('vexFlow', function() {
+ppNoteApp.directive('vexFlow', function() {
   return {
     restrict: 'EA',
     require: 'ngModel',
