@@ -90,8 +90,8 @@ ppNoteApp.directive('vexFlow', function () {
                 }
                 
                 var newIndex = 0;
-                if(notationString.length > 1 && (notationString[0] == '<' || notationString[0] == '>')) {
-                    newIndex = 1;
+                if(notationString.length > 2 && (notationString[0] == '<' || notationString[0] == '>')) {
+                    newIndex = 2;
                 }
                 
                 for (var i = newIndex; i < notationString.length; i++) {
