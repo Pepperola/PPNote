@@ -88,12 +88,12 @@ ppNoteApp.directive('vexFlow', function () {
                         }
                     }
                 }
-                
+
                 var newIndex = 0;
-                if(notationString.length > 2 && (notationString[0] == '<' || notationString[0] == '>')) {
+                if (notationString.length > 2 && (notationString[0] == '<' || notationString[0] == '>')) {
                     newIndex = 2;
                 }
-                
+
                 for (var i = newIndex; i < notationString.length; i++) {
                     var c = keyValues.indexOf(notationString[i]);
                     if (c == -1) {
@@ -129,7 +129,11 @@ ppNoteApp.directive('vexFlow', function () {
                     }
 
                     if (c > 5) {
-                        currentNote.push(completeNotes[c - 6]);
+                        if (multiKey && currentNote.indexOf(completeNotes[c - 6]) == -1) {
+                            currentNote.push(completeNotes[c - 6]);
+                        } else if (!multiKey) {
+                            currentNote.push(completeNotes[c - 6]);
+                        }
                     }
 
                     if (!multiKey) {
