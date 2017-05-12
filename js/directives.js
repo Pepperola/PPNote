@@ -88,13 +88,13 @@ ppNoteApp.directive('vexFlow', function () {
                         }
                     }
                 }
-
-                if (notationString.indexOf("x") != -1) {
-                    iElement.hide();
-                    return;
+                
+                var newIndex = 0;
+                if(notationString.length > 1 && (notationString[0] == '<' || notationString[0] == '>')) {
+                    newIndex = 1;
                 }
-
-                for (var i = 0; i < notationString.length; i++) {
+                
+                for (var i = newIndex; i < notationString.length; i++) {
                     var c = keyValues.indexOf(notationString[i]);
                     if (c == -1) {
                         iElement.hide();
