@@ -288,31 +288,43 @@ ppNoteApp.directive('vexFlow', function () {
                             }
                             if (overflow) {
                                 notesArray.push(tempNote);
-                                // Create a stave of full width at position 10, 40 on the canvas.
-                                topVal += 100;
-                                var stave = new VF.Stave(10, topVal, parentWidth - 15);
+                            
+                                if (timeCounter == "h") {
+                                    totalTime = 2
+                                };
+                                if (timeCounter == "q") {
+                                    totalTime = 1
+                                };
+                                if (timeCounter == "8") {
+                                    totalTime = 0.5
+                                };
+                                if (timeCounter == "w") {
+                                    // Create a stave of full width at position 10, 40 on the canvas.
+                                    topVal += 100;
+                                    var stave = new VF.Stave(10, topVal, parentWidth - 15);
 
-                                // Add a clef and time signature.
-                                stave.addClef("treble").addTimeSignature("4/4");
+                                    // Add a clef and time signature.
+                                    stave.addClef("treble").addTimeSignature("4/4");
 
-                                // Create a voice in 4/4 and add above notes
-                                var voice = new VF.Voice({
-                                    num_beats: 4,
-                                    resolution: Vex.Flow.RESOLUTION,
-                                    beat_value: 4
-                                });
-                                voice.setStrict(false);
-                                // Add the beginning bar
-                                notesArray.unshift(new Vex.Flow.BarNote(1));
-                                voice.addTickables(notesArray);
-                                notesArray = [];
+                                    // Create a voice in 4/4 and add above notes
+                                    var voice = new VF.Voice({
+                                        num_beats: 4,
+                                        resolution: Vex.Flow.RESOLUTION,
+                                        beat_value: 4
+                                    });
+                                    voice.setStrict(false);
+                                    // Add the beginning bar
+                                    notesArray.unshift(new Vex.Flow.BarNote(1));
+                                    voice.addTickables(notesArray);
+                                    notesArray = [];
 
-                                // Format and justify the notes to full with in pixels.
-                                var formatter = new VF.Formatter().joinVoices([voice]).format([voice], parentWidth - 70);
+                                    // Format and justify the notes to full with in pixels.
+                                    var formatter = new VF.Formatter().joinVoices([voice]).format([voice], parentWidth - 70);
 
-                                stave.setContext(context).draw();
-                                // Render voice
-                                voice.draw(context, stave);
+                                    stave.setContext(context).draw();
+                                    // Render voice
+                                    voice.draw(context, stave);
+                                }
                                 overflow = false;
                             }
                         }
