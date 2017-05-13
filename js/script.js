@@ -18,6 +18,7 @@ var parsePeppeNotation = function (notationString, scope) {
     var silenceTime = 0;
     var currentNote = 0;
     var notesArray = [];
+    var notesArrayFinal = [];
     scope.error = "";
 
     // Ignore spaces and newlines
@@ -186,12 +187,16 @@ var parsePeppeNotation = function (notationString, scope) {
                     notesArray.unshift(0);
                     silenceTime++;
                 }
-                totalCounter + 0;
+                totalCounter = timeCounter;
             }
             if(totalCounter == 8) {
                 timeCounterOld = 0;
             }else{
                 timeCounterOld = totalCounter;
+            }
+            if(notesArray.length == 8) {
+                notesArrayFinal = notesArrayFinal.concat(notesArray);
+                notesArray = [];
             }
             notesArray.push(currentNote);
             currentNote = 0;
@@ -200,7 +205,8 @@ var parsePeppeNotation = function (notationString, scope) {
             }
         }
     }
-    return notesArray;
+    notesArrayFinal = notesArrayFinal.concat(notesArray);
+    return notesArrayFinal;
 };
 
 var peppePlay = function (notesArray, scope) {
