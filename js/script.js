@@ -271,3 +271,9 @@ $(document).ready(function () {
         }
     }).toMaster();
 });
+
+function hasNumbers(t)
+{
+var regex = /\d/g;
+return regex.test(t);
+}   
