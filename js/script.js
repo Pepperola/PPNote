@@ -117,11 +117,15 @@ var parsePeppeNotation = function (notationString, scope) {
                         return null;
                     }
                     var startString = notationString.substring(0, i);
+                    var theNum = '0';
+                    if (hasNumbers(startString)) {
+                        theNum = startString.split("").reverse().join("").match(/\d+/)[0];
+                    }
                     var multiplyString = "";
                     var endString = notationString.substring(j + 3);
 
                     for (var n = 0; n < parseInt(notationString[j + 2]); n++) {
-                        multiplyString = multiplyString + notationString.substring(i + 1, j);
+                        multiplyString = multiplyString + theNum + notationString.substring(i + 1, j);
                     }
                     lookingForClose = false;
                     i = 0;
@@ -181,20 +185,20 @@ var parsePeppeNotation = function (notationString, scope) {
 
         if (!multiKey) {
             totalCounter = timeCounterOld + timeCounter;
-            if(totalCounter > 8){
+            if (totalCounter > 8) {
                 silenceTime = totalCounter - timeCounter;
-                while( silenceTime < 8 ) {
+                while (silenceTime < 8) {
                     notesArray.unshift(0);
                     silenceTime++;
                 }
                 totalCounter = timeCounter;
             }
-            if(totalCounter == 8) {
+            if (totalCounter == 8) {
                 timeCounterOld = 0;
-            }else{
+            } else {
                 timeCounterOld = totalCounter;
             }
-            if(notesArray.length == 8) {
+            if (notesArray.length == 8) {
                 notesArrayFinal = notesArrayFinal.concat(notesArray);
                 notesArray = [];
             }

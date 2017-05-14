@@ -70,11 +70,15 @@ ppNoteApp.directive('vexFlow', function () {
                                     return;
                                 }
                                 var startString = notationString.substring(0, i);
+                                var theNum = '0';
+                                if(hasNumbers(startString)){
+                                    theNum = startString.split("").reverse().join("").match(/\d+/)[0];
+                                }
                                 var multiplyString = "";
                                 var endString = notationString.substring(j + 3);
 
                                 for (var n = 0; n < parseInt(notationString[j + 2]); n++) {
-                                    multiplyString = multiplyString + notationString.substring(i + 1, j);
+                                    multiplyString = multiplyString + theNum + notationString.substring(i + 1, j);
                                 }
                                 lookingForClose = false;
                                 i = 0;
@@ -370,3 +374,9 @@ ppNoteApp.directive('vexFlow', function () {
         }
     }
 });
+
+function hasNumbers(t)
+{
+var regex = /\d/g;
+return regex.test(t);
+}   
