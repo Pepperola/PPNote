@@ -119,7 +119,7 @@ var parsePeppeNotation = function (notationString, scope) {
                     var startString = notationString.substring(0, i);
                     var theNum = '0';
                     if (hasNumbers(startString)) {
-                        theNum = startString.split("").reverse().join("").match(/\d+/)[0];
+                        theNum = startString.split("").reverse().join("").match(/\d/)[0];
                     }
                     var multiplyString = "";
                     var endString = notationString.substring(j + 3);

@@ -69,10 +69,14 @@ ppNoteApp.directive('vexFlow', function () {
                                     iElement.hide();
                                     return;
                                 }
-                                var startString = notationString.substring(0, i);
+                                var newIndex = 0;
+                                if( notationString[0] == '<' || notationString[0] == '>' ) {
+                                    newIndex = 2;
+                                }
+                                var startString = notationString.substring(newIndex, i);
                                 var theNum = '0';
                                 if(hasNumbers(startString)){
-                                    theNum = startString.split("").reverse().join("").match(/\d+/)[0];
+                                    theNum = startString.split("").reverse().join("").match(/\d/)[0];
                                 }
                                 var multiplyString = "";
                                 var endString = notationString.substring(j + 3);
